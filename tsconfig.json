@@ -17,5 +17,6 @@
       "allowJs": false,
       "checkJs": false,
     },
-    "exclude": ["node_modules", "docs", "stories", "__tests__", "dist"]
+    "exclude": ["node_modules", "docs", "stories", "__tests__", "dist"],
+    "include": ["src/**/*"]
 }

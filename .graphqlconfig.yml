@@ -1,0 +1,15 @@
+projects:
+  inssacrm2:
+    schemaPath: amplify/backend/api/inssacrm2/build/schema.graphql
+    includes:
+      - packages/main/src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: packages/main/src/API.ts
+        docsFilePath: packages/main/src/graphql
+extensions:
+  amplify:
+    version: 3
