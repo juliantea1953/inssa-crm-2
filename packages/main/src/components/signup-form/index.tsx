@@ -15,6 +15,9 @@ import {
     StyledDivider,
     StyledBottomText,
 } from "./style";
+import { Amplify, Auth } from "aws-amplify";
+import awsconfig from "../../aws-exports";
+Amplify.configure(awsconfig);
 
 interface IFormValues {
     email: string;
@@ -22,6 +25,18 @@ interface IFormValues {
     first_name: string;
     last_name: string;
 }
+
+const signUp = async (username: string, password: string) => {
+    const { user } = await Auth.signUp({
+        username,
+        password,
+        autoSignIn: {
+            // optional - enables auto sign in after user is confirmed
+            enabled: true,
+        },
+    });
+    console.log(user);
+};
 
 const SigninForm = () => {
     const {
@@ -31,7 +46,16 @@ const SigninForm = () => {
     } = useForm<IFormValues>();
 
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
-        alert(JSON.stringify(data, null));
+        /* alert(JSON.stringify(data, null)); */
+
+        signUp(data.email, data.password);
+        console.log(data);
+
+        /* signUp(data.email, data.password); */
+
+        /* const resul = API.graphql(
+            graphqlOperation(createTodo, { input: data })
+        ); */
     };
 
     return (

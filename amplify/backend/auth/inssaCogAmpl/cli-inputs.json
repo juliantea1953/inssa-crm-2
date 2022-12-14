@@ -1,10 +1,8 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "inssacrm28aa06307_identitypool_8aa06307",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "inssac8aa06307",
-    "userPoolName": "inssacrm28aa06307_userpool_8aa06307",
+    "resourceNameTruncated": "inssacec92e809",
+    "userPoolName": "amplifyFront",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,15 +29,23 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "inssac8aa06307_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "inssaCec92e809_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "8aa06307",
-    "resourceName": "inssacrm28aa06307",
-    "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "sharedId": "ec92e809",
+    "resourceName": "inssaCogAmpl",
+    "authSelections": "userPoolOnly",
+    "useDefault": "manual",
     "usernameAttributes": [
       "email"
     ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {},
+    "hostedUI": true,
+    "hostedUIDomainName": "amplify-domin",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

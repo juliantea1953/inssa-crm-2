@@ -13,7 +13,11 @@
     },
     "categories": {
       "auth": {
-        "inssacrm28aa06307": {}
+        "inssacrm28aa06307": {},
+        "inssaCogAmpl": {}
+      },
+      "api": {
+        "inssacrm2": {}
       }
     }
   }

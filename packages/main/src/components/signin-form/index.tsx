@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import { Amplify, API, graphqlOperation } from "aws-amplify";
+import awsExports from "../../aws-exports";
 import { FormGroup, Label, Input, Anchor, Button } from "@doar/components";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { hasKey } from "@doar/shared/methods";
@@ -9,6 +12,8 @@ import {
     StyledDivider,
     StyledBottomText,
 } from "./style";
+
+Amplify.configure(awsExports);
 
 interface IFormValues {
     email: string;
@@ -23,6 +28,8 @@ const BotonClip = () => {
         </div>
     );
 };
+
+import { Auth } from "aws-amplify";
 
 const SigninForm = () => {
     const {
