@@ -35,6 +35,7 @@ const signUp = async (username: string, password: string) => {
             enabled: true,
         },
     });
+
     console.log(user);
 };
 
@@ -48,7 +49,7 @@ const SigninForm = () => {
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
         /* alert(JSON.stringify(data, null)); */
 
-        signUp(data.email, data.password);
+        signUp(data.email, data.password).catch(() => {});
         console.log(data);
 
         /* signUp(data.email, data.password); */
