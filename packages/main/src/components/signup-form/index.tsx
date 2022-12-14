@@ -30,10 +30,6 @@ const signUp = async (username: string, password: string) => {
     const { user } = await Auth.signUp({
         username,
         password,
-        autoSignIn: {
-            // optional - enables auto sign in after user is confirmed
-            enabled: true,
-        },
     });
 
     console.log(user);
