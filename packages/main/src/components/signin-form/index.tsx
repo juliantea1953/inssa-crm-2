@@ -4,6 +4,7 @@ import awsExports from "../../aws-exports";
 import { FormGroup, Label, Input, Anchor, Button } from "@doar/components";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { hasKey } from "@doar/shared/methods";
+import { Auth } from "aws-amplify";
 import {
     StyledWrap,
     StyledTitle,
@@ -12,24 +13,36 @@ import {
     StyledDivider,
     StyledBottomText,
 } from "./style";
+import { Hub } from "aws-amplify";
+import { User } from "react-feather";
 
 Amplify.configure(awsExports);
 
 interface IFormValues {
-    email: string;
+    username: string;
     password: string;
 }
 
-const BotonClip = () => {
+/* const BotonClip = () => {
     return (
         <div>
             <p>holaaaa</p>
             <p>mundo</p>
         </div>
     );
-};
+}; */
 
-import { Auth } from "aws-amplify";
+const signIn = async (username: string, password: string) => {
+    const { username: user } = await Auth.signIn({
+        username,
+        password,
+
+        /* {
+            "custom:Nombre": "Cookie Dough",
+        }, */
+    });
+    console.log(user);
+};
 
 const SigninForm = () => {
     const {
@@ -39,7 +52,12 @@ const SigninForm = () => {
     } = useForm<IFormValues>();
 
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
-        alert(JSON.stringify(data, null));
+        /* alert(JSON.stringify(data, null)); */
+
+        signIn(data.username, data.password).catch((error) => {
+            alert(error);
+        });
+        console.log("asdasd", User);
     };
 
     return (
@@ -54,18 +72,18 @@ const SigninForm = () => {
                         Correo
                     </Label>
                     <Input
-                        type="email"
-                        id="email"
+                        type="username"
+                        id="username"
                         placeholder="correo@.com"
-                        feedbackText={errors?.email?.message}
-                        state={hasKey(errors, "email") ? "error" : "success"}
-                        showState={!!hasKey(errors, "email")}
-                        {...register("email", {
+                        feedbackText={errors?.username?.message}
+                        state={hasKey(errors, "username") ? "error" : "success"}
+                        showState={!!hasKey(errors, "username")}
+                        {...register("username", {
                             required: "Correo requerido",
-                            pattern: {
+                            /* pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                 message: "Correo invalido",
-                            },
+                            }, */
                         })}
                     />
                 </FormGroup>

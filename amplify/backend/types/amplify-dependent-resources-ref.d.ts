@@ -8,8 +8,8 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "auth": {
         "inssaCogAmpl": {
-            "HostedUIDomain": "string",
-            "OAuthMetadata": "string",
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",

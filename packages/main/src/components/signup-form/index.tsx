@@ -20,7 +20,7 @@ import awsconfig from "../../aws-exports";
 Amplify.configure(awsconfig);
 
 interface IFormValues {
-    email: string;
+    username: string;
     password: string;
     first_name: string;
     last_name: string;
@@ -30,9 +30,13 @@ const signUp = async (username: string, password: string) => {
     const { user } = await Auth.signUp({
         username,
         password,
+
+        /* {
+            "custom:Nombre": "Cookie Dough",
+        }, */
     });
 
-    console.log(user);
+    console.log("user", user);
 };
 
 const SigninForm = () => {
@@ -45,8 +49,14 @@ const SigninForm = () => {
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
         /* alert(JSON.stringify(data, null)); */
 
-        signUp(data.email, data.password).catch(() => {});
-        console.log(data);
+        signUp(data.username, data.password).catch((error) => {
+            alert(error);
+        });
+
+        /* signUp(data.email, data.password).catch(() => {}); */
+        console.log("asdad", data);
+
+        //console.log("signup", signUp);
 
         /* signUp(data.email, data.password); */
 
@@ -70,10 +80,10 @@ const SigninForm = () => {
                         id="email"
                         type="email"
                         placeholder="correo@.com"
-                        feedbackText={errors?.email?.message}
+                        feedbackText={errors?.username?.message}
                         state={hasKey(errors, "email") ? "error" : "success"}
                         showState={!!hasKey(errors, "email")}
-                        {...register("email", {
+                        {...register("username", {
                             required: "Correo es requerido",
                             pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
