@@ -41,7 +41,7 @@ const signIn = async (username: string, password: string) => {
             "custom:Nombre": "Cookie Dough",
         }, */
     });
-    console.log(user);
+    alert("ya");
 };
 
 const SigninForm = () => {
