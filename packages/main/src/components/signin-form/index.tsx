@@ -51,25 +51,44 @@ const SigninForm = () => {
         window.location.href = `/dashboard-one${search}`;
     };
 
-    const signIn = async (username: string, password: string) => {
+    /* const signIn = async (username: string, password: string) => {
         const { username: user } = await Auth.signIn({
             username,
             password,
         });
         redir();
-    };
+    }; */
 
-    const onSubmit: SubmitHandler<IFormValues> = async (data) => {
+    const onSubmit: SubmitHandler<IFormValues> = (data) => {
         /* alert(JSON.stringify(data, null)); */
 
         let err: string;
 
-        await signIn(data.username, data.password).catch((error) => {
+        async function aaa() {
+            try {
+                const user = await Auth.signIn(data.username, data.password);
+
+                const token = user.signInUserSession;
+                if (token != null) {
+                    console.log("user auth");
+
+                    window.location.href = `/dashboard-one${search}`;
+                    alert("loginnnn");
+                    console.log(token);
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }
+
+        aaa().catch((error) => {});
+
+        /*  await signIn(data.username, data.password).catch((error) => {
             err = error;
             alert(err);
-        });
+        }); */
 
-        console.log("asdasd");
+        //console.log("asdasd");
     };
 
     return (
