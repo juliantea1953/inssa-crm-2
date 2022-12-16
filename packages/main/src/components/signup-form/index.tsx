@@ -18,6 +18,8 @@ import {
 import { Amplify, Auth } from "aws-amplify";
 import awsconfig from "../../aws-exports";
 import { Hub } from "aws-amplify";
+import { createTodo } from "../..//graphql/mutations";
+import { API } from "aws-amplify";
 
 Amplify.configure(awsconfig);
 
@@ -26,6 +28,7 @@ interface IFormValues {
     password: string;
     first_name: string;
     last_name: string;
+    gender: string;
 }
 
 const signUp = async (username: string, password: string) => {
@@ -65,6 +68,20 @@ const SigninForm = () => {
         /* const resul = API.graphql(
             graphqlOperation(createTodo, { input: data })
         ); */
+
+        const newTodo = API.graphql({
+            query: createTodo,
+            variables: {
+                input: {
+                    FirstName: data.first_name,
+                    lastName: data.last_name,
+                    gender: data.username,
+                    email: data,
+                },
+            },
+        });
+
+        //console.log(newTodo);
     };
 
     return (
@@ -162,6 +179,27 @@ const SigninForm = () => {
                         })}
                     />
                 </FormGroup>
+                <FormGroup mb="20px">
+                    <Label display="block" mb="5px" htmlFor="last_name">
+                        Genero
+                    </Label>
+                    <Input
+                        id="gender"
+                        type="text"
+                        placeholder="Ingresa tu genero"
+                        feedbackText={errors?.gender?.message}
+                        state={hasKey(errors, "gender") ? "error" : "success"}
+                        showState={!!hasKey(errors, "gender")}
+                        {...register("gender", {
+                            required: "Genero requerido",
+                            minLength: {
+                                value: 2,
+                                message: "Minimo 2 caracteres",
+                            },
+                        })}
+                    />
+                </FormGroup>
+
                 {/* <FormGroup mb="20px">
                     <Text fontSize="12px">
                         By clicking <strong>Create an account</strong> below,

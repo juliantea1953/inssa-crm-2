@@ -1,5 +1,6 @@
 {
   "AppSyncApiName": "inssacrm2",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-12-16T21:25:54.272Z"
 }
