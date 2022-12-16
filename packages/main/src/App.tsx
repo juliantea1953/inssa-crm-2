@@ -105,7 +105,7 @@ const App = () => {
                         {/* Classic Routes */}
 
                         {/* Dashboard Routes */}
-                        <Route path="/" element={<SignUp />} />
+                        <Route path="/" element={<SignIn />} />
                         <Route
                             path="/dashboard-one"
                             element={<DashboardOne />}

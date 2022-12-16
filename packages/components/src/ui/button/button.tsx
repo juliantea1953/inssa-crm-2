@@ -246,6 +246,7 @@ Button.defaultProps = {
     iconButton: false,
     iconPosition: "left",
     iconSize: "sm",
+    path: "",
 };
 
 Button.displayName = "Button";

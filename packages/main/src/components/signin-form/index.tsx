@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import awsExports from "../../aws-exports";
 import { FormGroup, Label, Input, Anchor, Button } from "@doar/components";
@@ -15,6 +15,12 @@ import {
 } from "./style";
 import { Hub } from "aws-amplify";
 import { User } from "react-feather";
+import { Route } from "react-router-dom";
+import DashboardOne from "../../pages/dashboard-one";
+import path from "path";
+import { StyledDropItem } from "../header/header-dropdown-elements";
+import { Navigate } from "react-router-dom";
+import { readdir } from "fs";
 
 Amplify.configure(awsExports);
 
@@ -32,18 +38,6 @@ interface IFormValues {
     );
 }; */
 
-const signIn = async (username: string, password: string) => {
-    const { username: user } = await Auth.signIn({
-        username,
-        password,
-
-        /* {
-            "custom:Nombre": "Cookie Dough",
-        }, */
-    });
-    alert("ya");
-};
-
 const SigninForm = () => {
     const {
         register,
@@ -51,13 +45,31 @@ const SigninForm = () => {
         formState: { errors },
     } = useForm<IFormValues>();
 
-    const onSubmit: SubmitHandler<IFormValues> = (data) => {
+    const [search, setSearch] = useState(String);
+
+    const redir = () => {
+        window.location.href = `/dashboard-one${search}`;
+    };
+
+    const signIn = async (username: string, password: string) => {
+        const { username: user } = await Auth.signIn({
+            username,
+            password,
+        });
+        redir();
+    };
+
+    const onSubmit: SubmitHandler<IFormValues> = async (data) => {
         /* alert(JSON.stringify(data, null)); */
 
-        signIn(data.username, data.password).catch((error) => {
-            alert(error);
+        let err: string;
+
+        await signIn(data.username, data.password).catch((error) => {
+            err = error;
+            alert(err);
         });
-        console.log("asdasd", User);
+
+        console.log("asdasd");
     };
 
     return (
@@ -80,10 +92,10 @@ const SigninForm = () => {
                         showState={!!hasKey(errors, "username")}
                         {...register("username", {
                             required: "Correo requerido",
-                            /* pattern: {
+                            pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                 message: "Correo invalido",
-                            }, */
+                            },
                         })}
                     />
                 </FormGroup>
