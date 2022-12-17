@@ -1,9 +1,8 @@
 type Todo @model @auth(rules: [{allow: public}]) {
   id: ID!
-  FirstName: String
+  FirstName: String!
   lastName: String
   gender: String
-  username: String!
-  password: String!
+  email: String
 }
  
