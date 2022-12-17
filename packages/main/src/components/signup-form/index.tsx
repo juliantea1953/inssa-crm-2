@@ -54,9 +54,9 @@ const SigninForm = () => {
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
         /* alert(JSON.stringify(data, null)); */
 
-        /* signUp(data.username, data.password).catch((error) => {
+        signUp(data.username, data.password).catch((error) => {
             alert(error);
-        }); */
+        });
 
         /* signUp(data.email, data.password).catch(() => {}); */
         console.log("asdad", data);
