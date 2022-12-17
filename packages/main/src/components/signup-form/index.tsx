@@ -15,7 +15,7 @@ import {
     StyledDivider,
     StyledBottomText,
 } from "./style";
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify, Auth, graphqlOperation } from "aws-amplify";
 import awsconfig from "../../aws-exports";
 import { Hub } from "aws-amplify";
 import { createTodo } from "../..//graphql/mutations";
@@ -54,9 +54,9 @@ const SigninForm = () => {
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
         /* alert(JSON.stringify(data, null)); */
 
-        signUp(data.username, data.password).catch((error) => {
+        /* signUp(data.username, data.password).catch((error) => {
             alert(error);
-        });
+        }); */
 
         /* signUp(data.email, data.password).catch(() => {}); */
         console.log("asdad", data);
@@ -65,24 +65,45 @@ const SigninForm = () => {
 
         /* signUp(data.email, data.password); */
 
-        /* const resul = API.graphql(
-            graphqlOperation(createTodo, { input: data })
-        ); */
+        const resul = API.graphql(
+            graphqlOperation(createTodo, {
+                input: {
+                    FirstName: data.first_name,
+                    lastName: data.last_name,
+                    gender: data.gender,
+                    username: data.username,
+                    password: data.password,
+                },
+            })
+        );
 
-        const newTodo = API.graphql({
+        /* const newTodo = API.graphql({
             query: createTodo,
             variables: {
                 input: {
                     FirstName: data.first_name,
                     lastName: data.last_name,
-                    gender: data.username,
-                    email: data,
+                    gender: data.gender,
+                    email: data.username,
                 },
             },
-        });
+        }); */
 
         //console.log(newTodo);
     };
+
+    /* const newTodo = await API.graphql({
+        query: createTodo,
+        variables: {
+            input: {
+                FirstName: "Lorem ipsum dolor sit amet",
+                lastName: "Lorem ipsum dolor sit amet",
+                gender: "Lorem ipsum dolor sit amet",
+                username: "Lorem ipsum dolor sit amet",
+                password: "Lorem ipsum dolor sit amet",
+            },
+        },
+    }); */
 
     return (
         <StyledWrap>
