@@ -54,9 +54,9 @@ const SigninForm = () => {
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
         /* alert(JSON.stringify(data, null)); */
 
-        signUp(data.username, data.password).catch((error) => {
+        /* signUp(data.username, data.password).catch((error) => {
             alert(error);
-        });
+        }); */
 
         /* signUp(data.email, data.password).catch(() => {}); */
         console.log("asdad", data);
@@ -65,34 +65,25 @@ const SigninForm = () => {
 
         /* signUp(data.email, data.password); */
 
-        const resul = API.graphql(
-            graphqlOperation(createTodo, {
+        console.log("entra");
+
+        /* const resul = API.graphql(
+            graphqlOperation({
+                createTodo,
+
                 input: {
-                    FirstName: data.first_name,
-                    lastName: data.last_name,
-                    gender: data.gender,
-                    username: data.username,
-                    password: data.password,
+                    username: data.first_name,
+                    password: data.last_name,
                 },
             })
         );
-
-        /* const newTodo = API.graphql({
-            query: createTodo,
-            variables: {
-                input: {
-                    FirstName: data.first_name,
-                    lastName: data.last_name,
-                    gender: data.gender,
-                    email: data.username,
-                },
-            },
-        }); */
+        console.log("sale");
+        console.log(resul); */
 
         //console.log(newTodo);
     };
 
-    /* const newTodo = await API.graphql({
+    /* const newTodo = API.graphql({
         query: createTodo,
         variables: {
             input: {
@@ -103,7 +94,8 @@ const SigninForm = () => {
                 password: "Lorem ipsum dolor sit amet",
             },
         },
-    }); */
+    });
+    console.log("sale"); */
 
     return (
         <StyledWrap>
