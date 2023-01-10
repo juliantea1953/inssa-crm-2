@@ -47,9 +47,9 @@ const SigninForm = () => {
 
     const [search, setSearch] = useState(String);
 
-    const redir = () => {
+    /*  const redir = () => {
         window.location.href = `/dashboard-one${search}`;
-    };
+    }; */
 
     /* const signIn = async (username: string, password: string) => {
         const { username: user } = await Auth.signIn({
@@ -64,7 +64,7 @@ const SigninForm = () => {
 
         let err: string;
 
-        async function aaa() {
+        async function Ingresar() {
             try {
                 const user = await Auth.signIn(data.username, data.password);
 
@@ -72,8 +72,8 @@ const SigninForm = () => {
                 if (token != null) {
                     console.log("user auth");
 
-                    window.location.href = `/dashboard-one${search}`;
-                    alert("loginnnn");
+                    window.location.href = `/dashboard-one`;
+                    alert("Ingreso");
                     console.log(token);
                 }
             } catch (error) {
@@ -81,7 +81,7 @@ const SigninForm = () => {
             }
         }
 
-        aaa().catch((error) => {});
+        Ingresar().catch((error) => {});
 
         /*  await signIn(data.username, data.password).catch((error) => {
             err = error;
