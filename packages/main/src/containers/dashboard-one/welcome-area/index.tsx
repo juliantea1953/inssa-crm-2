@@ -25,8 +25,8 @@ const WelcomeArea = () => {
                 <StyledWelcomeLeft>
                     <Breadcrumb
                         prev={[{ text: "Dashboard", link: "/" }]}
-                        title="SEGUIMIENTO DE VENTAS"
-                        wcText="Bienvenido al Dashboard"
+                        title="SEGUIMIENTO DE SERVICIOS"
+                        wcText="BIENVENIDO AL MEJOR CRM TECNICO"
                     />
                 </StyledWelcomeLeft>
                 <StyledWelcomeRight>
