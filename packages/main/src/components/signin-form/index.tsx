@@ -123,9 +123,6 @@ const SigninForm = () => {
                         <Label display="block" mb="5px" htmlFor="password">
                             Contraseña
                         </Label>
-                        <Anchor path="/forgot-password" fontSize="13px">
-                            ¿Se te olvidó tu contraseña?
-                        </Anchor>
                     </StyledLabelWrap>
                     <Input
                         id="password"
@@ -148,6 +145,9 @@ const SigninForm = () => {
                             },
                         })}
                     />
+                    <Anchor path="/forgot-password" fontSize="13px">
+                        ¿Se te olvidó tu contraseña?
+                    </Anchor>
                 </FormGroup>
                 <Button type="submit" color="brand2" fullwidth>
                     Ingresar

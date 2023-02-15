@@ -31,6 +31,7 @@ const Chat = lazy(() => import("./pages/apps/chat"));
 const Contacts = lazy(() => import("./pages/apps/contacts"));
 const FileManager = lazy(() => import("./pages/apps/file-manager"));
 const Mail = lazy(() => import("./pages/apps/mail"));
+/* const dataForm = lazy(() => import("./pages/form-data")); */
 
 // Classic Plus Pages
 
@@ -106,6 +107,7 @@ const App = () => {
 
                         {/* Dashboard Routes */}
                         <Route path="/" element={<SignIn />} />
+                        {/*  <Route path="/form" element={<dataForm />} /> */}
                         <Route
                             path="/dashboard-one"
                             element={<DashboardOne />}
