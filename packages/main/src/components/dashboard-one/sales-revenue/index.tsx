@@ -25,7 +25,7 @@ const SalesRevenue = () => {
                 <StyledHeaderRight>
                     <StyledHeaderRightText>Country</StyledHeaderRightText>
                     <StyledHeaderRightIcon>
-                        USA <i className="fa fa-chevron-down" />
+                        COLOMBIA <i className="fa fa-chevron-down" />
                     </StyledHeaderRightIcon>
                 </StyledHeaderRight>
             </StyledHeader>
